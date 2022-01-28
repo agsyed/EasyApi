@@ -12,7 +12,7 @@ public class UnitTest1
     public void returnsWeatherForecast() 
     {
         var returnValue = controller.GetMockWeather();
-        Assert.True("Good1".Equals(returnValue.Value));
+        Assert.True("Good".Equals(returnValue.Value));
     }
 
     [Fact]
