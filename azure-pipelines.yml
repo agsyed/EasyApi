@@ -25,7 +25,7 @@ steps:
   displayName: 'Dotnet Build happening on $(buildConfiguration)'
 
 
-- script: dotnet test **/*test/*.csproj --logger trx
+- script: dotnet test --logger trx
   displayName: 'Dotnet Tests running on $(buildConfiguration)'
 
 - task: PublishTestResults@2
