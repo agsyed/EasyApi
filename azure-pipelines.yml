@@ -24,7 +24,6 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'Dotnet Build happening on $(buildConfiguration)'
 
-
 - script: dotnet test --logger trx
   displayName: 'Dotnet Tests running on $(buildConfiguration)'
 
