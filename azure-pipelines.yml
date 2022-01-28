@@ -35,13 +35,13 @@ steps:
 
 #
 
-# - task: UseDotNet@2
-#   inputs:
-#     command: publish
-#     publishWebProjects: false
-#     projects: 'src/EasyApi/EasyApi.csproj'
-#     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-#     zipAfterPublish: True
+- task: DotNetCoreCLI@2
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: 'src/EasyApi/EasyApi.csproj'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
 
 # - task: PublishBuildArtifacts@1
 #   inputs:
@@ -51,8 +51,9 @@ steps:
 
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
 - task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'drop'
-    publishLocation: 'Container'
+  displayName: 'publish artifacts'
+  # inputs:
+  #   pathToPublish: '$(Build.ArtifactStagingDirectory)' 
+  #   artifactName: 'drop'
+  #   publishLocation: 'Container'
 
