@@ -33,7 +33,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetMockWeather")]
     public ActionResult<string> GetMockWeather()
     {
-        var val = "2";
+        var val = "24";
         return "Good";
     }
 }
