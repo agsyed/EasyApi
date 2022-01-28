@@ -22,11 +22,15 @@ steps:
     includePreviewVersions: true
 
 - script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'Dotnet Build $(buildConfiguration)'
+  displayName: 'Dotnet Build happening on $(buildConfiguration)'
 
 
-- task: DotNetCoreCLI@2
+- script: dotnet test EasyApi.Test --logger trx
+  displayName: 'Dotnet Tests running on $(buildConfiguration)'
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
   inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
+
