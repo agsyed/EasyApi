@@ -33,9 +33,7 @@ steps:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
 
-#
-
-- task: DotNetCoreCLI@6
+- task: DotNetCoreCLI@2
   inputs:
     command: publish
     publishWebProjects: false
@@ -43,17 +41,6 @@ steps:
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     pathToPublish: '$(Build.ArtifactStagingDirectory)'
-#     artifactName: drop
-
-
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
-  # inputs:
-  #   pathToPublish: '$(Build.ArtifactStagingDirectory)' 
-  #   artifactName: 'drop'
-  #   publishLocation: 'Container'
-
